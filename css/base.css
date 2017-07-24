@@ -1,2 +1,29 @@
 body,html,p,div,ul,li,ol,h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
 li{list-style: none;}
+img{vertical-align: middle;}
+html,body{color:#777;font-size: 12px;font-family:'SimHei '}
+.fl{float: left;}
+.fr{float: right;}
+.clearfix:after{display: block;content: '';clear:both;}
+.clearfix{zoom:1;}
+i,em{font-style:normal;}
+a{text-decoration: none;color:#777;}
+
+.iconcolor{color:#00AAFF;}
+.white{color: #fff;}
+.red{color:#f06262;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
