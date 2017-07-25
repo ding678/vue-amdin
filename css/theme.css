@@ -1,0 +1,57 @@
+/*default*/
+    /*±³¾°*/
+header,.usernav{background: #fff;}
+body{background: #f5f5fa;}
+nav{background: #99a9bf;color:#fff;}
+nav div{border-color:#99a9bf;}
+nav div.current{border-color:#5d6a82;background:#b3c4d8;}
+nav a{color:#666;}
+nav a:hover{color:#fff;}
+.shortcuticon li{background:#f5f5fa;border-color:#dfdfdf;}
+.block{background:#fff;box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);}
+.usernav{border-color:#dfdfdf;}
+h6{color:#555;}
+    /*hover*/
+.usernav li:hover a,.usernav li:hover i{color: #333;}
+
+/*grey*/
+
+
+
+/*black-theme*/
+.black-theme{color:#c8c8c8;}
+.black-theme a{color:#c8c8c8;}
+.black-theme header,.black-theme .usernav{background: #000;}
+body.black-theme {background: #fff;}
+.black-theme nav{background: #333;color:#fff;}
+.black-theme nav div{border-color:#333;}
+.black-theme nav div.current{border-color:#666;background:#a1a1a1;}
+.black-theme nav a{color:#c8c8c8;}
+.black-theme nav a:hover{color:#999;}
+.black-theme .shortcuticon li{background:#f5f5fa;border-color:#dfdfdf;}
+.black-theme .block{background:#333;box-shadow: 0 2px 6px rgba(f, f, f, 0.4);}
+.black-theme .usernav{border-color:#dfdfdf;}
+.black-theme h6{color:#555;}
+/*hover*/
+.black-theme .usernav li:hover a,.usernav li:hover i{color: #333;}
+
+/*blue*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

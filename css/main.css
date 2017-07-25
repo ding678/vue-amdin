@@ -1,45 +1,90 @@
-header{padding:10px 0;box-shadow:0 1px 4px #777;background: #fff;}
-.usernav{position: absolute;top:60px;left:0;background: #fff;width:100%;border:1px solid #dfdfdf;padding:10px 8px;border-top:none;}
-.usernav{z-index:5;}
+header{padding:10px 0;box-shadow:0 1px 4px #777;}
+.usernav{position: absolute;top:50px;left:0;width:100%;border:1px solid #dfdfdf;padding:10px 8px;}
+.usernav{z-index:5;display: none;}
 .usernav li{line-height: 26px;}
-.usernav li:hover a,.usernav li:hover i{color: #333;}
+
 .usernav i{margin-right: 4px;}
 .usernav a{font-size:14px;}
 .username{line-height: 50px;position: relative;}
+.username:hover .usernav{display: block;}
+
 .username img{border-radius: 50%;}
 .username span{font-size: 16px;display: inline-block;margin:0 3px;}
 .message{position: relative;margin-right: 18px;}
 .message .icon{line-height: 50px;font-size: 26px;font-weight: bold;}
 .message .num{position: absolute;top:6px;left:8px;border-radius: 50%;background: red;color:#fff;padding:2px;width: 16px;height: 14px;text-align:center;line-height: 14px;}
 
-body{background: #f5f5fa;}
+
 .content{padding-top:10px;}
-nav{background: #99a9bf;padding:20px 0;color:#fff;}
-nav a{color:#666;transition:color .4s;}
-nav a:hover{color:#fff;}
+nav{padding:20px 0;}
+nav a{transition:color .4s;}
 nav span{font-size: 16px;}
-nav div{border-left:6px solid #99a9bf;overflow: hidden;padding-right:10px;}
-nav div.current{border-left-color:#4a83eb;background:#b3c4d8;}
+nav div{border-left:6px solid #99a9bf;overflow: hidden;padding-right:10px;cursor: pointer;}
 nav div i:first-child{font-size:18px;text-align:center;}
+
 nav div i,nav div span{line-height: 40px;}
 .childnav{margin-left:30px;padding:10px;}
 .childnav li{line-height: 26px;}
 html,body,#app,.content,nav{height: 100%;}
 .main{padding:10px 20px;}
-.main .tip{font-size: 16px;line-height: 40px;font-weight: bold;}
+.main .tip{font-size: 16px;line-height: 40px;font-weight: bold;margin-bottom:20px;}
 
-.shortcut{margin-top:16px;}
-.shortcut p{font-size: 18px;font-weight: bold;margin-bottom:14px;margin-left:20px;}
-.shortcuticon li{float: left; border-radius: 10px;padding:10px 16px;margin:0 20px;text-align: center;cursor: pointer;border:1px solid #dfdfdf;background:#f5f5fa;}
+h5{font-size: 18px;font-weight: bold;margin-bottom:14px;margin-left:20px;}
+.shortcuticon li{float: left; border-radius: 10px;padding:10px 16px;margin:0 20px;text-align: center;cursor: pointer;border:1px solid #dfdfdf;}
 .shortcuticon i,.shortcuticon span{display: block;}
 .shortcuticon i{font-size: 50px;margin-bottom:5px;}
 .shortcuticon span{font-size: 18px;}
 
-h6{overflow:hidden;}
+h6{overflow:hidden;margin-bottom:20px;font-size: 18px;}
 h6 span{float: left;}
 h6 i{float: right;font-weight: 20px;cursor:pointer;}
-h6 span{font-size: 14px;}
-.block{padding:16px;background:#fff;border-radius: 6px;margin-top:10px;box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);}
+.block{padding:20px;border-radius: 6px;margin-top:10px;}
+
+.shortcut,.theme{width:50%;}
+.themebtn span{display: inline-block;margin:30px 6px 0 20px;width:16px;height: 16px;border-radius: 50%;cursor: pointer;vertical-align: middle;}
+#quota{height: 500px;}
+
+/*animate*/
+nav div i{transition:all .6s;}
+nav .current i:last-child{transform: rotate(180deg)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
