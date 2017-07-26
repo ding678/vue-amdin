@@ -2,6 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>后台首页</title>
     <link rel="stylesheet" href="css/base.css"/>
     <link rel="stylesheet" href="css/index.css"/>
@@ -14,11 +15,11 @@
 <body>
     <div id="app" :class="themes+'-theme'">
         <el-row tag="header">
-            <el-col :span="4" class="logo">
+            <div class="logo fl">
                 <img src="image/pic.gif" width="100" height="50"/>
-            </el-col>
-            <el-col :span="16">&nbsp;</el-col>
-            <el-col :span="4" class="user">
+            </div>
+
+            <div class="user fr">
                 <div class="message fl">
                     <i class="icon iconfont icon-tongzhi"></i>
                     <i class="num">12</i>
@@ -37,10 +38,13 @@
                         </li>
                     </ul>
                 </div>
-            </el-col>
+            </div>
         </el-row>
+        <div class="navBtn" @click="shownav=!shownav" :class="{hidenav:shownav}">
+            <i class="icon iconfont icon-daohang"></i>
+        </div>
         <el-row class="content">
-            <el-col :span="3" tag="nav">
+            <nav class="fl" :class="{showNav:shownav}">
                 <ul v-for="(item,index) in navlist">
                     <li>
                         <el-row @click.native="showNav(index)" :class="item.current ? 'current':''">
@@ -55,9 +59,9 @@
                         </ul>
                     </li>
                 </ul>
-            </el-col>
-            <el-col :span="21" class="main">
-               <div class="block">
+            </nav>
+            <div class="main fr">
+               <div class="block padding20">
                    <p class="tip"><span class="red">石浩浩</span>，Welcome to the background management! 今天是2017年07月24日。今日访问 <span class="red">5</span> 次</p>
                    <div class="clearfix">
                        <div class="shortcut fl">
@@ -92,14 +96,22 @@
                        </div>
                    </div>
                </div>
-                <div class="block">
+                <div class="block" id="aaa">
                     <h6>
                         <span>流量统计</span>
-                        <i v-toclose.native>&times;</i>
+                        <span>
+                            <i class="icon iconfont icon-icon-test" v-fullscreen></i>
+                            <i class="icon iconfont icon-shuaxin"></i>
+                            <i class="icon iconfont icon-13"></i>
+                        </span>
                     </h6>
                     <div id="quota"></div>
                 </div>
-            </el-col>
+                <div class="double clearfix">
+                    <div class="block fl"></div>
+                    <div class="block fl"></div>
+                </div>
+            </div>
         </el-row>
     </div>
     <script src="js/axios.min.js"></script>

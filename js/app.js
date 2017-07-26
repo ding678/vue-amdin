@@ -9,6 +9,7 @@ const vm=new Vue({
     data:{
         usernav:false,
         themes:'',
+        shownav:false,
         navlist:[
             {
                 nav:'表单和表格',
@@ -76,7 +77,6 @@ const vm=new Vue({
     methods:{
         getchart:function(){
             let quota=echarts.init(document.querySelector('#quota'));
-
             quota.showLoading();
             axios.get('./data/quota.json')
                 .then(function (response) {
@@ -84,26 +84,53 @@ const vm=new Vue({
 
                     quota.hideLoading();
                     quota.setOption({
-                        title: {
-                            text: '2017-07月访问量',
-                            textStyle:{
-                                color:'#777',
-                                fontSize:14
+                        baseOption:{
+                            title: {
+                                text: '2017-07月访问量',
+                                textStyle:{
+                                    color:'#777',
+                                    fontSize:14
+                                }
+                            },
+                            tooltip: {},
+                            legend: {
+                                data:['访问量']
+                            },
+                            xAxis: {
+                                data: ['2017-05-01','2017-05-02','2017-05-03','2017-05-04','2017-05-05','2017-05-06','2017-05-07']
+                            },
+                            yAxis: {},
+                            dataZoom: [
+                                {
+                                    type: 'slider',
+                                    xAxisIndex: 0,
+                                    filterMode: 'empty'
+                                },
+                                {
+                                    type: 'inside',
+                                    xAxisIndex: 0,
+                                    filterMode: 'empty'
+                                }
+                            ],
+                            series: [{
+                                name: '访问量',
+                                type: 'line',
+                                data: [5, 20, 36, 10, 10, 20]
+                            }]
+                        },
+                        media:[
+                            {
+                                option:{}
+                            },
+                            {
+                                query: {maxWidth: 670, minWidth: 550},
+                                option:{}
+                            },
+                            {
+                                query: {maxWidth: 550},
+                                option:{}
                             }
-                        },
-                        tooltip: {},
-                        legend: {
-                            data:['访问量']
-                        },
-                        xAxis: {
-                            data: ['2017-05-01','2017-05-02','2017-05-03','2017-05-04','2017-05-05','2017-05-06','2017-05-07']
-                        },
-                        yAxis: {},
-                        series: [{
-                            name: '访问量',
-                            type: 'line',
-                            data: [5, 20, 36, 10, 10, 20]
-                        }]
+                        ]
                     });
                 })
         },

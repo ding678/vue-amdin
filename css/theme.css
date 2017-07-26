@@ -10,7 +10,7 @@ nav a:hover{color:#fff;}
 .shortcuticon li{background:#f5f5fa;border-color:#dfdfdf;}
 .block{background:#fff;box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);}
 .usernav{border-color:#dfdfdf;}
-h6{color:#555;}
+h6{color:#fff;}
     /*hover*/
 .usernav li:hover a,.usernav li:hover i{color: #333;}
 
