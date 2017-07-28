@@ -1,5 +1,4 @@
 /*default*/
-    /*±³¾°*/
 header,.usernav{background: #fff;}
 body{background: #f5f5fa;}
 nav{background: #99a9bf;color:#fff;}
@@ -9,13 +8,11 @@ nav a{color:#666;}
 nav a:hover{color:#fff;}
 .shortcuticon li{background:#f5f5fa;border-color:#dfdfdf;}
 .block{background:#fff;box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);}
-.usernav{border-color:#dfdfdf;}
+.usernav{border-color:#dfdfdf;border-top:2px solid #99a9bf;}
 h6{color:#fff;}
-    /*hover*/
 .usernav li:hover a,.usernav li:hover i{color: #333;}
-
+.block .title{color:#000;}
 /*grey*/
-
 
 
 /*black-theme*/

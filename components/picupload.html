@@ -11,6 +11,31 @@
     <link rel="stylesheet" href="../css/theme.css"/>
     <script src="../js/vue.js"></script>
     <script src="../js/index.js"></script>
+    <style>
+    .avatar-uploader .el-upload {
+        border: 1px dashed #d9d9d9;
+        border-radius: 6px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    .avatar-uploader .el-upload:hover {
+        border-color: #20a0ff;
+    }
+    .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 178px;
+        height: 178px;
+        line-height: 178px;
+        text-align: center;
+    }
+    .avatar {
+        width: 178px;
+        height: 178px;
+        display: block;
+    }
+</style>
 </head>
 <body>
 <div id="app" :class="themes+'-theme'">
@@ -54,50 +79,45 @@
                     </el-row>
                     <ul class="childnav" v-show="item.current">
                         <li v-for="child in item.child">
-                            <a :href="+child.parmas+'.html'" :class="{white:child.current}">{{child.childnav}}</a>
+                            <a :href="child.parmas+'.html'" :class="{white:child.current}">{{child.childnav}}</a>
                         </li>
                     </ul>
                 </li>
             </ul>
         </nav>
         <div class="main main2 fr">
-            <div class="route clearfix"><span>表格</span></div>
+            <div class="route clearfix"><span>上传图片</span></div>
             <div class="block padding20">
-                <template>
-                    <el-table
-                            :data="tableData"
-                            border
-                            style="width: 100%">
-                        <el-table-column
-                                prop="date"
-                                label="日期"
-                                width="180">
-                        </el-table-column>
-                        <el-table-column
-                                prop="name"
-                                label="姓名"
-                                width="180">
-                        </el-table-column>
-                        <el-table-column
-                                prop="address"
-                                label="地址">
-                        </el-table-column>
-                        <el-table-column
-                                fixed="right"
-                                label="操作"
-                                width="100">
-                            <template scope="scope">
-                                <el-button type="text" size="small" @click="lookdata">查看</el-button>
-                                <el-button type="text" size="small">编辑</el-button>
-                            </template>
-                        </el-table-column>
-                    </el-table>
-                </template>
+                <div class="marginbot">
+                    <div class="title">用户图像上传</div>
+                    <el-upload
+                            class="avatar-uploader"
+                            action="https://jsonplaceholder.typicode.com/posts/"
+                            :show-file-list="false"
+                            :on-success="handleAvatarSuccess"
+                            :before-upload="beforeAvatarUpload">
+                        <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    </el-upload>
+                </div>
+                <div class="marginbot">
+                    <div class="title">图片列表缩略图</div>
+                    <el-upload
+                            class="upload-demo"
+                            action="https://jsonplaceholder.typicode.com/posts/"
+                            :on-preview="handlePreview"
+                            :on-remove="handleRemove"
+                            :file-list="fileList2"
+                            list-type="picture">
+                        <el-button size="small" type="primary">点击上传</el-button>
+                        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                    </el-upload>
+                </div>
             </div>
         </div>
     </el-row>
 </div>
 <script src="../js/axios.min.js"></script>
-<script src="../js/table.js"></script>
+<script src="../js/pic.js"></script>
 </body>
 </html>

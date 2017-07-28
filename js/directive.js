@@ -4,7 +4,7 @@
 //const vm=new Vue()
 Vue.directive('fullscreen',function(el,binding){
     const app=document.querySelector('#aaa');
-    console.log(el.parentNode)
+    console.log()
 
 });
 

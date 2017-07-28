@@ -18,15 +18,18 @@ const vm=new Vue({
                 child:[
                     {
                         childnav:'表格',
-                        parmas:'tables'
+                        parmas:'tables',
+                        current:true
                     },
                     {
                         childnav:'表单',
-                        parmas:'form'
+                        parmas:'form',
+                        current:false
                     },
                     {
                         childnav:'可增减表格',
-                        parmas:'selftable'
+                        parmas:'selftable',
+                        current:false
                     }
                 ]
             },
@@ -37,23 +40,28 @@ const vm=new Vue({
                 child:[
                     {
                         childnav:'富文本编辑器',
-                        parmas:'editor'
+                        parmas:'editor',
+                        current:false
                     },
                     {
                         childnav:'列表拖拽',
-                        parmas:'drag'
+                        parmas:'drag',
+                        current:false
                     },
                     {
                         childnav:'分页',
-                        parmas:'pages'
+                        parmas:'pages',
+                        current:false
                     },
                     {
                         childnav:'图片上传',
-                        parmas:'picupload'
+                        parmas:'picupload',
+                        current:false
                     },
                     {
                         childnav:'弹框',
-                        parmas:'popin'
+                        parmas:'popin',
+                        current:false
                     }
                 ]
             },
@@ -64,11 +72,14 @@ const vm=new Vue({
                 child:[
                     {
                         childnav:'折线图',
-                        parmas:'line'
+                        parmas:'line',
+                        current:false
+
                     },
                     {
                         childnav:'柱图',
-                        parmas:'bar'
+                        parmas:'bar',
+                        current:false
                     }
                 ]
             }
@@ -78,7 +89,7 @@ const vm=new Vue({
         getchart:function(){
             let quota=echarts.init(document.querySelector('#quota'));
             quota.showLoading();
-            axios.get('./data/quota.json')
+            axios.get('../data/quota.json')
                 .then(function (response) {
                     let getData=response.data;//请求数据
 

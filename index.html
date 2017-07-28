@@ -25,11 +25,11 @@
                     <i class="num">12</i>
                 </div>
                 <div class="username fl">
-                    <div>
+                    <div @click="usernav=!usernav">
                         <img src="image/pic.gif" width="30" height="30"/><span>石浩浩</span>
                         <i class="icon iconfont icon-arrowdown"></i>
                     </div>
-                    <ul class="usernav">
+                    <ul class="usernav" v-show="usernav">
                         <li>
                             <i class="icon iconfont  icon-tongzhi"></i><a href="">首页</a>
                         </li>
@@ -61,6 +61,7 @@
                 </ul>
             </nav>
             <div class="main fr">
+               <div class="route clearfix"><span>首页</span></div>
                <div class="block padding20">
                    <p class="tip"><span class="red">石浩浩</span>，Welcome to the background management! 今天是2017年07月24日。今日访问 <span class="red">5</span> 次</p>
                    <div class="clearfix">
@@ -96,11 +97,12 @@
                        </div>
                    </div>
                </div>
-                <div class="block" id="aaa">
+
+                <div class="block">
                     <h6>
                         <span>流量统计</span>
                         <span>
-                            <i class="icon iconfont icon-icon-test" v-fullscreen></i>
+                            <i class="icon iconfont icon-icon-test"></i>
                             <i class="icon iconfont icon-shuaxin"></i>
                             <i class="icon iconfont icon-13"></i>
                         </span>
@@ -116,7 +118,6 @@
     </div>
     <script src="js/axios.min.js"></script>
     <script src="js/echarts.common.min.js"></script>
-    <script src="js/directive.js"></script>
     <script src="js/components.js"></script>
     <script src="js/app.js"></script>
 </body>

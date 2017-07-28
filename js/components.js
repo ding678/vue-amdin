@@ -14,4 +14,7 @@ Vue.component('my-btn',{
            this.$emit('themes',item);
         }
     }
+});
+Vue.component('blocks',{
+
 })
