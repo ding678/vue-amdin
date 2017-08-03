@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>后台首页</title>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/index.css"/>
+    <link rel="stylesheet" href="../css/fonts/iconfont.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/theme.css"/>
+    <script src="../js/vue.js"></script>
+    <script src="../js/index.js"></script>
+</head>
+<body>
+<div id="app" :class="themes+'-theme'">
+    <el-row tag="header">
+        <div class="logo fl">
+            <img src="../image/pic.gif" width="100" height="50"/>
+        </div>
+
+        <div class="user fr">
+            <div class="message fl">
+                <i class="icon iconfont icon-tongzhi"></i>
+                <i class="num">12</i>
+            </div>
+            <div class="username fl">
+                <div @click="usernav=!usernav">
+                    <img src="../image/pic.gif" width="30" height="30"/><span>石浩浩</span>
+                    <i class="icon iconfont icon-arrowdown"></i>
+                </div>
+                <ul class="usernav" v-show="usernav">
+                    <li>
+                        <i class="icon iconfont  icon-tongzhi"></i><a href="">首页</a>
+                    </li>
+                    <li>
+                        <i class="icon iconfont  icon-tongzhi"></i><a href="">退出</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </el-row>
+    <div class="navBtn" @click="shownav=!shownav" :class="{hidenav:shownav}">
+        <i class="icon iconfont icon-daohang"></i>
+    </div>
+    <el-row class="content">
+        <nav class="fl" :class="{showNav:shownav}">
+            <ul v-for="(item,index) in navlist">
+                <li>
+                    <el-row @click.native="showNav(index)" :class="item.current ? 'current':''">
+                        <el-col :span="4" tag="i" class="icon iconfont" :class="item.icon"></el-col>
+                        <el-col :span="18" tag="span">{{item.nav}}</el-col>
+                        <el-col :span="2" tag="i" class="icon iconfont icon-arrowdown"></el-col>
+                    </el-row>
+                    <ul class="childnav" v-show="item.current">
+                        <li v-for="child in item.child">
+                            <a :href="child.parmas+'.html'" :class="{white:child.current}">{{child.childnav}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="main main2 fr">
+            <div class="route clearfix"><span>表单</span></div>
+            <div class="block padding20">
+                <div class="marginbot">
+                    <div class="title">基础用法</div>
+                    <template>
+                        <el-radio class="radio" v-model="radio" label="1">备选项</el-radio>
+                        <el-radio class="radio" v-model="radio" label="2">备选项</el-radio>
+                    </template>
+                </div>
+                <div class="marginbot">
+                    <div class="title">禁用状态</div>
+                    <template>
+                        <el-radio disabled v-model="radio1" label="禁用">备选项</el-radio>
+                        <el-radio disabled v-model="radio1" label="选中且禁用">备选项</el-radio>
+                    </template>
+                </div>
+                <div class="marginbot">
+                    <div class="title">按钮样式</div>
+                    <template>
+                        <el-radio-group v-model="radio3">
+                            <el-radio-button label="上海"></el-radio-button>
+                            <el-radio-button label="北京"></el-radio-button>
+                            <el-radio-button label="广州"></el-radio-button>
+                            <el-radio-button label="深圳"></el-radio-button>
+                        </el-radio-group>
+                        <div style="margin: 15px 0;"></div>
+                        <el-radio-group v-model="radio4">
+                            <el-radio-button label="上海"></el-radio-button>
+                            <el-radio-button label="北京" :disabled="true"></el-radio-button>
+                            <el-radio-button label="广州"></el-radio-button>
+                            <el-radio-button label="深圳"></el-radio-button>
+                        </el-radio-group>
+                        <div style="margin: 15px 0;"></div>
+                        <el-radio-group v-model="radio5" :disabled="true">
+                            <el-radio-button label="上海"></el-radio-button>
+                            <el-radio-button label="北京"></el-radio-button>
+                            <el-radio-button label="广州"></el-radio-button>
+                            <el-radio-button label="深圳"></el-radio-button>
+                        </el-radio-group>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </el-row>
+</div>
+<script src="../js/axios.min.js"></script>
+<script>
+new Vue({
+    el:'#app',
+    data:{
+        usernav:false,
+        themes:'',
+        shownav:false,
+        navlist:[
+            {
+                nav:'表单和表格',
+                icon:'icon-tongzhi',
+                current:true,
+                child:[
+                    {
+                        childnav:'表格',
+                        parmas:'tables',
+                        current:false
+                    },
+                    {
+                        childnav:'表单',
+                        parmas:'form',
+                        current:true
+                    },
+                    {
+                        childnav:'可增减表格',
+                        parmas:'selftable',
+                        current:false
+                    }
+                ]
+            },
+            {
+                nav:'基本组件',
+                icon:'icon-tongzhi',
+                current:false,
+                child:[
+                    {
+                        childnav:'富文本编辑器',
+                        parmas:'editor',
+                        current:false
+                    },
+                    {
+                        childnav:'列表拖拽',
+                        parmas:'drag',
+                        current:false
+                    },
+                    {
+                        childnav:'分页',
+                        parmas:'pages',
+                        current:false
+                    },
+                    {
+                        childnav:'图片上传',
+                        parmas:'picupload',
+                        current:false
+                    },
+                    {
+                        childnav:'弹框',
+                        parmas:'popin',
+                        current:false
+                    }
+                ]
+            },
+            {
+                nav:'图表',
+                icon:'icon-tongzhi',
+                current:false,
+                child:[
+                    {
+                        childnav:'折线图',
+                        parmas:'line',
+                        current:false
+
+                    },
+                    {
+                        childnav:'柱图',
+                        parmas:'bar',
+                        current:false
+                    }
+                ]
+            }
+        ],
+        radio:'',
+        radio1: '选中且禁用',
+        radio3: '上海',
+        radio4: '上海',
+        radio5: '上海'
+    }
+})
+</script>
+</body>
+</html>

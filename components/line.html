@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>后台首页</title>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/index.css"/>
+    <link rel="stylesheet" href="../css/fonts/iconfont.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/theme.css"/>
+    <script src="../js/vue.js"></script>
+    <script src="../js/index.js"></script>
+</head>
+<body>
+<div id="app">
+    <el-row tag="header">
+        <div class="logo fl">
+            <img src="../image/pic.gif" width="100" height="50"/>
+        </div>
+
+        <div class="user fr">
+            <div class="message fl">
+                <i class="icon iconfont icon-tongzhi"></i>
+                <i class="num">12</i>
+            </div>
+            <div class="username fl">
+                <div @click="usernav=!usernav">
+                    <img src="../image/pic.gif" width="30" height="30"/><span>石浩浩</span>
+                    <i class="icon iconfont icon-arrowdown"></i>
+                </div>
+                <ul class="usernav" v-show="usernav">
+                    <li>
+                        <i class="icon iconfont  icon-tongzhi"></i><a href="../index.html">首页</a>
+                    </li>
+                    <li>
+                        <i class="icon iconfont  icon-tongzhi"></i><a href="../login.html.html">退出</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </el-row>
+    <div class="navBtn" @click="shownav=!shownav" :class="{hidenav:shownav}">
+        <i class="icon iconfont icon-daohang"></i>
+    </div>
+    <el-row class="content">
+        <nav class="fl" :class="{showNav:shownav}">
+            <ul v-for="(item,index) in navlist">
+                <li>
+                    <el-row @click.native="showNav(index)" :class="item.current ? 'current':''">
+                        <el-col :span="4" tag="i" class="icon iconfont" :class="item.icon"></el-col>
+                        <el-col :span="18" tag="span">{{item.nav}}</el-col>
+                        <el-col :span="2" tag="i" class="icon iconfont icon-arrowdown"></el-col>
+                    </el-row>
+                    <ul class="childnav" v-show="item.current">
+                        <li v-for="child in item.child">
+                            <a :href="child.parmas+'.html'" :class="{white:child.current}">{{child.childnav}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="main main2 fr">
+            <div class="route clearfix"><span>折线图</span></div>
+            <div class="block padding20">
+                <div id="linechart"></div>
+            </div>
+        </div>
+    </el-row>
+</div>
+<script src="../js/echarts.common.min.js"></script>
+<script>
+new Vue({
+    el:'#app',
+    data:{
+        usernav:false,
+        shownav:false,
+        navlist:[
+            {
+                nav:'表单和表格',
+                icon:'icon-tongzhi',
+                current:false,
+                child:[
+                    {
+                        childnav:'表格',
+                        parmas:'tables',
+                        current:false
+                    },
+                    {
+                        childnav:'表单',
+                        parmas:'form',
+                        current:false
+                    },
+                    {
+                        childnav:'可增减表格',
+                        parmas:'selftable',
+                        current:false
+                    }
+                ]
+            },
+            {
+                nav:'基本组件',
+                icon:'icon-tongzhi',
+                current:false,
+                child:[
+                    {
+                        childnav:'富文本编辑器',
+                        parmas:'editor',
+                        current:false
+                    },
+                    {
+                        childnav:'列表拖拽',
+                        parmas:'drag',
+                        current:false
+                    },
+                    {
+                        childnav:'分页',
+                        parmas:'pages',
+                        current:true
+                    },
+                    {
+                        childnav:'图片上传',
+                        parmas:'picupload',
+                        current:false
+                    },
+                    {
+                        childnav:'弹框',
+                        parmas:'popin',
+                        current:false
+                    }
+                ]
+            },
+            {
+                nav:'图表',
+                icon:'icon-tongzhi',
+                current:true,
+                child:[
+                    {
+                        childnav:'折线图',
+                        parmas:'line',
+                        current:true
+
+                    },
+                    {
+                        childnav:'柱图',
+                        parmas:'bar',
+                        current:false
+                    }
+                ]
+            }
+        ]
+    },
+    mounted:function(){
+        this.linechart();
+    },
+    methods:{
+        showNav:function(index){
+            this.navlist.forEach(function(e){
+                e.current=false;
+            })
+            this.navlist[index].current=true;
+        },
+        linechart:function(){
+            var myChart = echarts.init(document.getElementById('linechart'));
+            option = {
+                title: {
+                    text: '折线图堆叠'
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                legend: {
+                    data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                toolbox: {
+                    feature: {
+                        saveAsImage: {}
+                    }
+                },
+                xAxis: {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ['周一','周二','周三','周四','周五','周六','周日']
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [
+                    {
+                        name:'邮件营销',
+                        type:'line',
+                        stack: '总量',
+                        data:[120, 132, 101, 134, 90, 230, 210]
+                    },
+                    {
+                        name:'联盟广告',
+                        type:'line',
+                        stack: '总量',
+                        data:[220, 182, 191, 234, 290, 330, 310]
+                    },
+                    {
+                        name:'视频广告',
+                        type:'line',
+                        stack: '总量',
+                        data:[150, 232, 201, 154, 190, 330, 410]
+                    },
+                    {
+                        name:'直接访问',
+                        type:'line',
+                        stack: '总量',
+                        data:[320, 332, 301, 334, 390, 330, 320]
+                    },
+                    {
+                        name:'搜索引擎',
+                        type:'line',
+                        stack: '总量',
+                        data:[820, 932, 901, 934, 1290, 1330, 1320]
+                    }
+                ]
+            };
+            myChart.setOption(option);
+        }
+    }
+})
+</script>
+</body>
+</html>

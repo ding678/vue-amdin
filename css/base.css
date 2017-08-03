@@ -6,14 +6,12 @@ html,body{color:#777;font-size: 12px;font-family:'SimHei '}
 .fr{float: right;}
 .clearfix:after{display: block;content: '';clear:both;}
 .clearfix{zoom:1;}
-i,em{font-style:normal;}
+
 a{text-decoration: none;color:#777;}
 
 .iconcolor{color:#00AAFF;}
 .white{color: #fff;}
 .red{color:#f06262;}
-
-
 
 .themebtn .grey{background-color:#777;}
 .themebtn .blue{background-color:#4a83eb;}

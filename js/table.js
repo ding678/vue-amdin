@@ -127,6 +127,39 @@ new Vue({
             city: '普陀区',
             address: '上海市普陀区金沙江路 1518 弄',
             zip: 200333
+        }],
+        tableData5: [{
+            id: '12987122',
+            name: '好滋好味鸡蛋仔',
+            category: '江浙小吃、小吃零食',
+            desc: '荷兰优质淡奶，奶香浓而不腻',
+            address: '上海市普陀区真北路',
+            shop: '王小虎夫妻店',
+            shopId: '10333'
+        }, {
+            id: '12987123',
+            name: '好滋好味鸡蛋仔',
+            category: '江浙小吃、小吃零食',
+            desc: '荷兰优质淡奶，奶香浓而不腻',
+            address: '上海市普陀区真北路',
+            shop: '王小虎夫妻店',
+            shopId: '10333'
+        }, {
+            id: '12987125',
+            name: '好滋好味鸡蛋仔',
+            category: '江浙小吃、小吃零食',
+            desc: '荷兰优质淡奶，奶香浓而不腻',
+            address: '上海市普陀区真北路',
+            shop: '王小虎夫妻店',
+            shopId: '10333'
+        }, {
+            id: '12987126',
+            name: '好滋好味鸡蛋仔',
+            category: '江浙小吃、小吃零食',
+            desc: '荷兰优质淡奶，奶香浓而不腻',
+            address: '上海市普陀区真北路',
+            shop: '王小虎夫妻店',
+            shopId: '10333'
         }]
     },
     methods:{
@@ -136,11 +169,37 @@ new Vue({
             })
             this.navlist[index].current=true;
         },
-        lookdata:function(){
+        lookdata:function(index){
            var tag=this.$createElement;
             this.$msgbox({
-                title:'wenzi',
-                message:tag('div',555)
+                title:'详细信息',
+                message:tag('ul',{class:'itemdetail'},[
+                    tag('li',null,'日期：'+this.tableData[index].date),
+                    tag('li',null,'姓名：'+this.tableData[index].name),
+                    tag('li',null,'地址：'+this.tableData[index].address)
+                ])
+            })
+        },
+        editdata:function(index,row){//index当前操作的位置，row当前操作的内容
+            var tag=this.$createElement;
+            this.$msgbox({
+                title:'编辑信息',
+                message:tag('ul',{class:'itemdetail'},[
+                    tag('li',null,[
+                        tag('span',null,'日期：'),
+                        tag('el-input',{value:'7777'},'777')
+                    ]),
+                    tag('li',null,[
+                        tag('span',null,'姓名：'),
+                        tag('el-input',{value:'7777'},this.tableData[index].name)
+                    ]),
+                    tag('li',null,[
+                        tag('span',null,'地址：'),
+                        tag('el-input',{value:'7777'},this.tableData[index].address)
+                    ])
+                ]),
+                showCancelButton: true,
+                cancelButtonText: '取消'
             })
         }
     }

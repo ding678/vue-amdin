@@ -12,12 +12,12 @@ const vm=new Vue({
             {
                 nav:'表单和表格',
                 icon:'icon-tongzhi',
-                current:true,
+                current:false,
                 child:[
                     {
                         childnav:'表格',
                         parmas:'tables',
-                        current:true
+                        current:false
                     },
                     {
                         childnav:'表单',
@@ -34,7 +34,7 @@ const vm=new Vue({
             {
                 nav:'基本组件',
                 icon:'icon-tongzhi',
-                current:false,
+                current:true,
                 child:[
                     {
                         childnav:'富文本编辑器',
@@ -54,7 +54,7 @@ const vm=new Vue({
                     {
                         childnav:'图片上传',
                         parmas:'picupload',
-                        current:false
+                        current:true
                     },
                     {
                         childnav:'弹框',

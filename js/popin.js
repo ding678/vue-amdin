@@ -8,7 +8,7 @@ new Vue({
             {
                 nav:'表单和表格',
                 icon:'icon-tongzhi',
-                current:true,
+                current:false,
                 child:[
                     {
                         childnav:'表格',
@@ -30,7 +30,7 @@ new Vue({
             {
                 nav:'基本组件',
                 icon:'icon-tongzhi',
-                current:false,
+                current:true,
                 child:[
                     {
                         childnav:'富文本编辑器',
@@ -55,7 +55,7 @@ new Vue({
                     {
                         childnav:'弹框',
                         parmas:'popin',
-                        current:false
+                        current:true
                     }
                 ]
             },
@@ -132,60 +132,94 @@ open4:function(){
         instance.confirmButtonText = '执行中...';
         setTimeout(() => {
             done();
-        setTimeout(() => {
-            instance.confirmButtonLoading = false;
-    }, 300);
-}, 3000);
-} else {
-    done();
-}
-}
-}).then(action => {
-    this.$message({
-        type: 'info',
-        message: 'action: ' + action
-    });
-});
-},
-success:function() {
-    this.$message('恭喜你，这是一条成功消息');
-},
-mesg:function() {
-    this.$message({
-        showClose:true,//关闭按钮
-        message: '这是一条消息提示',
-        type: 'success'
-    });
-},
-warn:function() {
-    this.$message({
-        showClose:true,
-        message: '警告哦，这是一条警告消息',
-        type: 'warning',
-        iconClass:'icon iconfont icon-tongzhi'
-    });
-},
-error:function() {
-    this.$message.error('错了哦，这是一条错误消息');
-},
-openVn:function(){
-    const h = this.$createElement;
-    this.$message({
-        message: h('p', null, [
-            h('span', null, '内容可以是 '),
-            h('b', { style: 'color: red' }, 'VNode')
-        ])
-    });
-},
-openVn2:function(){
-    const h = this.$createElement;
-    this.$message({
-        message: h('p', null, [
-            h('span', null, '内容可以是 '),
-            h('b', { style: 'color: red' }, 'VNode')
-        ]),
-        duration:6000
-    });
-}
-}
+            setTimeout(() => {
+                instance.confirmButtonLoading = false;
+            }, 300);
+        }, 3000);
+        } else {
+            done();
+        }
+        }
+        }).then(action => {
+            this.$message({
+                type: 'info',
+                message: 'action: ' + action
+            });
+        });
+        },
+        success:function() {
+            this.$message('恭喜你，这是一条成功消息');
+        },
+        mesg:function() {
+            this.$message({
+                showClose:true,//关闭按钮
+                message: '这是一条消息提示',
+                type: 'success'
+            });
+        },
+        warn:function() {
+            this.$message({
+                showClose:true,
+                message: '警告哦，这是一条警告消息',
+                type: 'warning',
+                iconClass:'icon iconfont icon-tongzhi'
+            });
+        },
+        error:function() {
+            this.$message.error('错了哦，这是一条错误消息');
+        },
+        openVn:function(){
+            const h = this.$createElement;
+            this.$message({
+                message: h('p', null, [
+                    h('span', null, '内容可以是 '),
+                    h('b', { style: 'color: red' }, 'VNode')
+                ])
+            });
+        },
+        closed:function() {
+            const h = this.$createElement;
+            this.$notify({
+                title: '标题名称',
+                message: h('i', { style: 'color: teal'}, '这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案这是提示文案')
+            });
+        },
+        noclose:function() {
+            this.$notify({
+                title: '提示',
+                message: '这是一条不会自动关闭的消息',
+                duration: 0
+            });
+        },
+        successmesg:function() {
+            this.$notify({
+                title: '成功',
+                message: '这是一条成功的提示消息',
+                type: 'success'
+            });
+        },
+
+        warnmesg:function() {
+            this.$notify({
+                title: '警告',
+                message: '这是一条警告的提示消息',
+                type: 'warning'
+            });
+        },
+
+        mesgs:function() {
+            this.$notify.info({
+                title: '消息',
+                message: '这是一条消息的提示消息'
+            });
+        },
+
+        errormesg:function() {
+            this.$notify.error({
+                title: '错误',
+                message: '这是一条错误的提示消息',
+                offset:10
+            });
+        }
+    }
 })

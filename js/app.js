@@ -92,7 +92,6 @@ const vm=new Vue({
             axios.get('../data/quota.json')
                 .then(function (response) {
                     let getData=response.data;//请求数据
-
                     quota.hideLoading();
                     quota.setOption({
                         baseOption:{

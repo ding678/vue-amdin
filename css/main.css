@@ -50,16 +50,23 @@ h6 .icon{float: left;margin:0 6px;line-height:18px;font-size:18px;font-weight: 2
 .shortcut,.theme{width:50%;}
 .themebtn{padding-top:30px;}
 .themebtn span{display: inline-block;margin:0 6px 0 20px;width:16px;height: 16px;border-radius: 50%;cursor: pointer;vertical-align: middle;}
-#quota{height: 400px;}
+#quota,#linechart,#barchart{height: 400px;}
 
 .navBtn{display:none;position:fixed;top:82px;left:0;padding:10px;border-radius: 6px;background: rgba(122,122,122,0.5);z-index:5;box-shadow: 0 0 6px #fff inset;}
 table .el-button+.el-button{margin-left:0 !important;}
 .main2,.main2 .block{height: 100%;}
+.itemdetail li{line-height: 30px;}
+.draglist ul{width:30%;margin: 0 5%;border:1px solid #dfdfdf;border-bottom:none;border-radius: 4px;}
+.draglist li{line-height: 30px;border-bottom:1px solid #dfdfdf;padding:0 4px;font-size: 16px;}
+
+
 /*animate*/
 nav div i{transition:all .6s;}
 nav .current i:last-child{transform: rotate(180deg)}
 nav {transition:all .6s;}
 .navBtn{transition:all 1s out-back;}
+.topbar{border:1px solid #ccc;line-height: 30px;font-size: 20px;}
+.editarea{border:1px solid #ccc;height: 500px;background: #fff;}
 @media (min-width:300px) and (max-width:768px){
     body{font-size: 12px;}
     nav{width: 160px;position: fixed;top:82px;left:-240px;z-index:5;}
@@ -76,6 +83,8 @@ nav {transition:all .6s;}
     .showNav{left:0;}
     .navBtn{display: block;}
     .hidenav{left:160px;transform: scale(-1,1)}
+    .el-message-box{width:auto;}
+    .marginbot button{margin-bottom:10px;}
 }
 
 
