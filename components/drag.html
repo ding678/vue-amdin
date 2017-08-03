@@ -63,21 +63,25 @@
         <div class="main main2 fr">
             <div class="route clearfix"><span>拖拽</span></div>
             <div class="block padding20">
-                <div class="title">列表</div>
-                <div class="draglist clearfix">
-                    <p>互相拖拽</p>
-                    <ul class="fl" id="list-a">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                    </ul>
-                    <ul class="fl" id="list-b">
-                        <li>a</li>
-                        <li>b</li>
-                        <li>cc</li>
-                        <li>d</li>
-                    </ul>
+                <div class="marginbot">
+                    <div class="title">列表（两组列表可互相拖拽）</div>
+                    <div class="draglist clearfix">
+                        <ul class="fl" id="list-a">
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                            <li>4</li>
+                        </ul>
+                        <ul class="fl" id="list-b">
+                            <li>a</li>
+                            <li>b</li>
+                            <li>cc</li>
+                            <li>d</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="marginbot">
+                    <div class="title"></div>
                 </div>
             </div>
         </div>
@@ -90,8 +94,6 @@ new Vue({
     data:{
         usernav:false,
         shownav:false,
-        currentPage3: 5,
-        currentPage4: 4,
         navlist:[
             {
                 nav:'表单和表格',
@@ -178,8 +180,17 @@ new Vue({
             this.navlist[index].current=true;
         },
         todrag:function(){
-                var lista=document.querySelector('#list-a');
-            Sortable.create(lista);
+//            两组互相拖拽
+            var lista=document.querySelector('#list-a');
+            var listb=document.querySelector('#list-b');
+                Sortable.create(lista,{
+                    group:'doublelist',
+                    handle:'.draglist'
+                });
+                Sortable.create(listb,{
+                    group:'doublelist',             //命名一样的name
+                    handle:'.draglist'             //css  selector（拖拽元素的共同父级）
+                });
         }
     }
 })
