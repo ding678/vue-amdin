@@ -12,7 +12,7 @@ header{padding:10px 4px;box-shadow:0 1px 4px #777;}
 .username span{font-size: 16px;display: inline-block;margin:0 3px;}
 .message{position: relative;margin-right: 18px;}
 .message .icon{line-height: 50px;font-size: 26px;font-weight: bold;}
-.message .num{position: absolute;top:6px;left:8px;border-radius: 50%;background: red;color:#fff;padding:2px;width: 16px;height: 14px;text-align:center;line-height: 14px;}
+.message .num{position: absolute;top:6px;left:8px;border-radius: 50%;background: red;color:#fff;padding:2px;width: 16px;height: 14px;text-align:center;line-height: 14px;font-style:normal;}
 
 
 .content{padding-top:10px;}
@@ -58,7 +58,11 @@ table .el-button+.el-button{margin-left:0 !important;}
 .itemdetail li{line-height: 30px;}
 .draglist ul{width:30%;margin: 0 5%;border:1px solid #dfdfdf;border-bottom:none;border-radius: 4px;}
 .draglist li{line-height: 30px;border-bottom:1px solid #dfdfdf;padding:0 4px;font-size: 16px;}
-
+.editlist,.addbtn{width:300px;}
+.editlist{overflow: hidden;border-top-left-radius: 5px;border-top-right-radius: 5px;}
+.editlist li{line-height: 30px;background: #dae2ed;padding:0 10px;}
+.editlist i{cursor: pointer;}
+.addbtn{background: #99a9bf;color:#fff;text-align: center;line-height:36px;font-size: 18px;cursor: pointer;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;}
 
 /*animate*/
 nav div i{transition:all .6s;}
@@ -85,6 +89,7 @@ nav {transition:all .6s;}
     .hidenav{left:160px;transform: scale(-1,1)}
     .el-message-box{width:auto;}
     .marginbot button{margin-bottom:10px;}
+    .editlist{width:80%;}
 }
 
 

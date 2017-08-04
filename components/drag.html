@@ -80,6 +80,16 @@
                         </ul>
                     </div>
                 </div>
+                <div class="marginbot">
+                    <div class="title">编辑列表</div>
+                    <ul class="editlist" id="editlist">
+                        <li v-for="(item,index) in editlist" class="clearfix">
+                            <span class="fl">{{item}}</span>
+                            <i class="icon iconfont icon-tongzhi fr" @click="delList(index)"></i>
+                        </li>
+                    </ul>
+                    <div  @click="open3" class="addbtn">添加</div>
+                </div>
             </div>
         </div>
     </el-row>
@@ -164,12 +174,31 @@ new Vue({
                     }
                 ]
             }
-        ]
+        ],
+        editlist:['摄氏度','看空间','神射手']
     },
     mounted:function(){
         this.todrag();
     },
     methods:{
+        delList:function(index){
+            this.editlist.splice(index,1)
+        },
+        open3:function(){
+            this.$prompt('添加list', null, {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消'
+            }).then(({value})=>{
+                if(value){
+                    this.editlist.push(value);
+                }else{
+                this.$message({
+                    message: '请填写文本框',
+                    type: 'warning'
+                });
+                }
+            })
+        },
         showNav:function(index){
             this.navlist.forEach(function(e){
                 e.current=false;
@@ -188,6 +217,9 @@ new Vue({
                     group:'doublelist',             //命名一样的name
                     handle:'.draglist'             //css  selector（拖拽元素的共同父级）
                 });
+//             编辑列表
+            var edits=document.querySelector('#editlist');
+            new Sortable(edits);
         }
     }
 })
