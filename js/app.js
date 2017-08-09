@@ -5,7 +5,6 @@ const vm=new Vue({
     el:'#app',
     mounted:function(){
         this.getchart();
-        this.autopopin();
     },
     data:{
         usernav:false,
@@ -153,11 +152,6 @@ const vm=new Vue({
         },
         getTheme:function(name){
             this.themes=name;
-        },
-        autopopin:function(){
-            this.$alert('欢迎石武浩',111,{
-                showConfirmButton:false
-            })
         }
     }
 });
